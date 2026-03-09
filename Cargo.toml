@@ -3,6 +3,7 @@ members = [
     ".",
     "gel-cli-derive",
     "gel-cli-instance",
+    "js/native",
     "tests/shared-client-tests",
 ]
 

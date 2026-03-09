@@ -1,6 +1,7 @@
 /tmp
 /.vagga
 /target
+node_modules
 .vscode
 .idea
 

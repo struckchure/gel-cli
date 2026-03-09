@@ -1,0 +1,29 @@
+{
+  "name": "gel-cli-js",
+  "version": "0.1.0",
+  "description": "JavaScript package wrapper for gel-cli powered by napi-rs",
+  "main": "index.js",
+  "type": "commonjs",
+  "bin": {
+    "gel": "bin/gel.js"
+  },
+  "scripts": {
+    "build": "npm run build:cli && npm run build:napi",
+    "build:cli": "cargo build --release --manifest-path ../Cargo.toml --bin gel && mkdir -p dist && cp ../target/release/gel dist/gel",
+    "build:napi": "napi build --manifest-path native/Cargo.toml --release --output-dir .",
+    "prepack": "npm run build",
+    "test": "npm run build:napi && node --test test/*.test.js"
+  },
+  "files": [
+    "bin",
+    "dist",
+    "index.js",
+    "native/*.toml",
+    "native/src/*.rs",
+    "*.node"
+  ],
+  "license": "MIT OR Apache-2.0",
+  "devDependencies": {
+    "@napi-rs/cli": "^3.5.1"
+  }
+}

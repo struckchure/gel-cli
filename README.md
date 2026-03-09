@@ -31,6 +31,19 @@ cargo run -- --admin -d tutorial
 cargo test
 ```
 
+JavaScript package (napi-rs wrapper)
+------------------------------------
+
+A JS CLI package scaffold is available in `/js` and exposes the same `gel`
+commands by forwarding argv to the bundled Rust `gel` binary via napi-rs:
+
+```bash
+cd js
+npm install
+npm run build
+node bin/gel.js --help
+```
+
 Tests
 =====
 
