@@ -15,13 +15,17 @@ test('CLI wrapper forwards args to binary through napi', () => {
     { mode: 0o755 },
   );
 
-  const result = spawnSync(process.execPath, [script, '--help', 'query'], {
-    env: {
-      ...process.env,
-      GEL_CLI_BINARY: fakeBinary,
-    },
-    encoding: 'utf8',
-  });
+  try {
+    const result = spawnSync(process.execPath, [script, '--help', 'query'], {
+      env: {
+        ...process.env,
+        GEL_CLI_BINARY: fakeBinary,
+      },
+      encoding: 'utf8',
+    });
 
-  assert.equal(result.status, 0);
+    assert.equal(result.status, 0);
+  } finally {
+    fs.unlinkSync(fakeBinary);
+  }
 });

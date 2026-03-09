@@ -8,7 +8,7 @@ function loadBinding() {
     .map((file) => path.join(__dirname, file));
 
   if (candidates.length === 0) {
-    throw new Error('No native napi-rs binding found. Run `npm run build:napi` first.');
+    throw new Error('No native napi-rs binding found. Run `npm run build` first.');
   }
 
   return require(candidates[0]);
